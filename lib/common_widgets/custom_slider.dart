@@ -57,6 +57,8 @@ class _CustomSliderState extends State<CustomSlider> {
                 style: TextStyle(
                   color: Colors.grey.shade600,
                   fontSize: 12.0,
+                  decorationColor: Colors.grey.shade500,
+                  decoration: TextDecoration.underline,
                 ),
               ),
             ],
