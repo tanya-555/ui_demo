@@ -12,16 +12,11 @@ class ShimmerListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.separated(
-        separatorBuilder: (context, index) => SizedBox(
-          height: 10,
-        ),
-        itemCount: itemCount,
-        itemBuilder: (BuildContext ctxt, int index) {
-          return itemBuilder;
-        },
-      ),
+    return ListView.builder(
+      itemCount: itemCount,
+      itemBuilder: (BuildContext ctxt, int index) {
+        return itemBuilder;
+      },
     );
   }
 }

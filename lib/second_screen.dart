@@ -37,7 +37,7 @@ class _SecondScreenState extends State<SecondScreen> {
       appBar: AppBar(
         title: Text('Shimmer Demo'),
       ),
-      body:
+      body: _isInit ?
       ListView.builder(
         itemCount: _data.length,
         itemBuilder: (context, pos) {
@@ -53,7 +53,12 @@ class _SecondScreenState extends State<SecondScreen> {
             ),
           );
         }
-      ),
+      ) : Container(
+        child: ShimmerListView(
+          itemCount: 16,
+          itemBuilder: ShimmerItem(),
+        ),
+    ),
     );
   }
 }

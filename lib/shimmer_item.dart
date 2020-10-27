@@ -13,18 +13,28 @@ class ShimmerItem extends StatelessWidget {
       children: <Widget>[
         Container(
           color: Colors.white,
-          padding: EdgeInsets.all(20),
           child: Shimmer.fromColors(
             baseColor: Colors.black12,
             highlightColor: Color(0Xf0f0f0),
             child: Column(
-              children: <Widget>[
+              children: [
                 Shimmer_Row(
-                  firstFlex: 2,
-                  secondFlex: 1,
-                  thirdFlex: 1,
-                  height: 30,
+                  height: 2,
                   radius: 2,
+                  width: 900,
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(0.0, 20.0, 0.0, 20.0),
+                  child: Shimmer_Row(
+                    height: 20,
+                    radius: 2,
+                    width: 200,
+                  ),
+                ),
+                Shimmer_Row(
+                  height: 2,
+                  radius: 2,
+                  width: 900,
                 ),
               ],
             ),
@@ -35,50 +45,32 @@ class ShimmerItem extends StatelessWidget {
   }
 }
 
-//each row of the shimmer item which has a 3 container's who's flex value can be changes
 class Shimmer_Row extends StatelessWidget {
-  final int firstFlex;
-  final int secondFlex;
-  final int thirdFlex;
   final double height;
   final double radius;
+  final double width;
 
   const Shimmer_Row(
-      {this.firstFlex,
-        this.secondFlex,
-        this.thirdFlex,
+      {
         this.height,
-        this.radius});
+        this.radius,
+        this.width});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: <Widget>[
         Flexible(
-          flex: firstFlex,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(radius),
-              color: Colors.white,
+          child: Center(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(radius),
+                color: Colors.white,
+              ),
+              height: height,
+              width: width,
             ),
-            height: height,
-          ),
-        ),
-        Flexible(
-          flex: secondFlex,
-          child: Container(
-            height: height,
-          ),
-        ),
-        Flexible(
-          flex: thirdFlex,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(radius),
-              color: Colors.white,
-            ),
-            height: height,
-          ),
+          )
         ),
       ],
     );
