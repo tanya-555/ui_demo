@@ -7,9 +7,11 @@ class CustomSlider extends StatefulWidget {
   final double newLimitValue;
   final double minValue;
   final double maxValue;
+  // specify height for the SizedBox enclosing the newLimit Text Field
+  final double width;
 
-  CustomSlider({@required this.currentLimitLabel, @required this.currentLimitValue,
-    @required this.newLimitLabel, @required this.newLimitValue, @required this.minValue, @required this.maxValue});
+  CustomSlider({@required this.currentLimitLabel, @required this.currentLimitValue, @required this.newLimitLabel,
+    @required this.newLimitValue, @required this.minValue, @required this.maxValue, @required this.width});
 
   @override
   _CustomSliderState createState() => _CustomSliderState();
@@ -56,11 +58,12 @@ class _CustomSliderState extends State<CustomSlider> {
                 ),
               ),
               SizedBox(
-                width: 50,
+                width: widget.width,
                 child: TextField(
                   controller: _controller,
                   style: TextStyle(
                     color: Colors.grey.shade600,
+                    fontSize: 12.0,
                   ),
                   onChanged: (text) {
                     setState(() {

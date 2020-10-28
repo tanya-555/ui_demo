@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(30),
                   child: CustomSlider(currentLimitLabel: 'Current Limit',currentLimitValue: 12000,newLimitLabel: 'New Limit',
-                      newLimitValue: 18000, minValue: 0, maxValue: 20000),
+                      newLimitValue: 18000, minValue: 0, maxValue: 20000, width: 50),
                 ),
                 Container(
                   padding: EdgeInsets.all(30),
