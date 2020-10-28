@@ -17,11 +17,14 @@ class CustomSlider extends StatefulWidget {
 
 class _CustomSliderState extends State<CustomSlider> {
 
-  String newLimit;
+  String _newLimit;
+  TextEditingController _controller;
 
   @override
   void initState() {
-    newLimit = widget.newLimitValue.toString();
+    _controller = TextEditingController();
+    _newLimit = widget.newLimitValue.toString();
+    _controller.text = _newLimit;
     super.initState();
   }
 
@@ -52,15 +55,20 @@ class _CustomSliderState extends State<CustomSlider> {
                   fontSize: 12.0,
                 ),
               ),
-              Text(
-                newLimit ?? widget.newLimitValue.toInt().toString(),
-                style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: 12.0,
-                  decorationColor: Colors.grey.shade500,
-                  decoration: TextDecoration.underline,
+              SizedBox(
+                width: 50,
+                child: TextField(
+                  controller: _controller,
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                  ),
+                  onChanged: (text) {
+                    setState(() {
+                      _newLimit = text;
+                    });
+                  },
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -77,10 +85,11 @@ class _CustomSliderState extends State<CustomSlider> {
             child: Slider(
               min: widget.minValue,
               max: widget.maxValue,
-              value: double.parse(newLimit) ?? widget.currentLimitValue,
+              value: double.parse(_newLimit) ?? widget.currentLimitValue,
               onChanged: (value) {
                 setState(() {
-                  newLimit = value.toInt().toString();
+                  _newLimit = value.toInt().toString();
+                  _controller.text = _newLimit;
                 });
               },
             ),
